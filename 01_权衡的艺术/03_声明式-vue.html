@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+	<div id="app">
+		<div class="box" @click="clickFn">{{ message }}</div>
+	</div>
+
+	<script>
+
+		/** 
+		 * 声明式 - vue - 关注结果
+		 * 
+		 * 1.获取id为appd的div元素
+		 * 2.他的文本内容为hello xinxin~
+		 * 3.为其绑定点击事件
+		 * 4.当点击时弹出提示: ok
+		*/
+
+		const { createApp, ref } = Vue
+
+		const app = createApp({
+			setup() {
+				const message = ref('hello xinxin~')
+
+				const clickFn = () => alert('ok')
+				return {
+					message,
+					clickFn
+				}
+			}
+		})
+
+		app.mount("#app")
+	</script>
+
+</body>
+
+</html>

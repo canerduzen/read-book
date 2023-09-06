@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+	<div id="app">
+		<div class="box" @click="clickFn">{{ message }}</div>
+	</div>
+
+	<script>
+
+		// 先抛出结论: 声明式代码的性能不优于命令式代码的性能
+
+		// 修改文本为hello vue3
+		const { createApp, ref } = Vue
+
+		const app = createApp({
+			setup() {
+
+				// 之前
+				const message = ref('hello xinxin~')
+
+				const clickFn = () => alert('ok')
+
+				// 之后
+				message.value = 'hello vue3'
+
+				return {
+					message,
+					clickFn
+				}
+			}
+		})
+
+		app.mount("#app")
+	</script>
+
+</body>
+
+</html>
